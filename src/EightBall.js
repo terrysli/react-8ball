@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// TODO: import .css here
 
 /** Magic Eight Ball showing random messages and corresponding colors
  *
@@ -40,6 +41,7 @@ function EightBall({ answers }) {
   };
 
   // TODO: style={{backgroundColor: color}}, put rest of style in .css
+  // give button a className="EightBall"
   return (
     <div>
     <button onClick={handleClick} style={buttonStyle}>
