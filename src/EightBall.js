@@ -18,7 +18,8 @@ function EightBall({ answers }) {
   // const [answer, setAnswer] = useState({msg: "Think of...", color: "black"});
   const [msg, setMsg] = useState("Think of a Question.");
   const [color, setColor] = useState("black");
-
+  const [colorFreq, setColorFreq] = useState({'green':0, 'red': 0, 'goldenrod': 0})
+  console.log(colorFreq)
   console.log("EightBall", msg, color);
 
   function handleClick(evt) {
@@ -28,6 +29,17 @@ function EightBall({ answers }) {
 
     setColor(answer.color);
     console.log("color:", color);
+    for (let c in colorFreq) {
+      if (c === color) {
+        colorFreq[color]++;
+      }
+    }
+  }
+
+  function clearState(evt) {
+    setColor('black');
+    setMsg('Think of a Question.');
+    setColorFreq({'green':0, 'red': 0, 'goldenrod': 0})
   }
 
   // TODO: put this in a .css file and convert property names to .css format
@@ -47,6 +59,15 @@ function EightBall({ answers }) {
     <button onClick={handleClick} style={buttonStyle}>
       <b>{msg}</b>
     </button>
+    <br></br>
+    <button onClick={clearState}>
+    <b>Reset EightBall</b>
+    </button>
+    <ul>
+      <li>Green {colorFreq["green"]}</li>
+      <li>Red {colorFreq["red"]}</li>
+      <li>Goldenrod {colorFreq["goldenrod"]}</li>
+    </ul>
   </div>
   );
 }
